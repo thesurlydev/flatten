@@ -1,6 +1,6 @@
 [package]
 name = "flatten-project"
-version = "0.1.0"
+version = "0.2.0"
 description = "Flattens nested project directories into a single directory with underscore-delimited filenames while preserving the original structure."
 authors = ["shane <shane@surly.dev>"]
 edition = "2021"
