@@ -1,4 +1,4 @@
-# flatten
+# flatten-project
 
 A Rust CLI tool that flattens nested project directories into a single directory with underscore-delimited filenames 
 while preserving the original structure.
@@ -6,7 +6,7 @@ while preserving the original structure.
 ## Features
 
 - Preserves original project structure
-- Respects `.gitignore` and `.flattenignore` patterns
+- Respects `.gitignore` and `.flatignore` patterns
 - Handles filename collisions automatically
 - Processes hidden files
 - Creates underscore-delimited filenames based on original paths
@@ -30,12 +30,12 @@ cargo install --path .
 
 Run in the current directory:
 ```bash
-flatten
+flatten-project
 ```
 
 Or specify a target directory:
 ```bash
-flatten /path/to/project
+flatten-project /path/to/project
 ```
 
 ## Example
@@ -68,10 +68,10 @@ my-project/
 
 ## Ignore Patterns
 
-The tool respects both `.gitignore` and `.flattenignore` files. Create a `.flattenignore` file to specify additional patterns for files you don't want to include in the flattened output:
+The tool respects both `.gitignore` and `.flatignore` files. Create a `.flatignore` file to specify additional patterns for files you don't want to include in the flattened output:
 
 ```gitignore
-# .flattenignore
+# .flatignore
 Cargo.lock
 *.tmp
 build/

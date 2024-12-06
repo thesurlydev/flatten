@@ -9,7 +9,7 @@ use std::io::{self};
 use std::path::{Path, PathBuf};
 
 fn should_skip_file(file_name: &str) -> bool {
-    matches!(file_name, ".gitignore" | ".flattenignore")
+    matches!(file_name, ".gitignore" | ".flatignore")
 }
 
 fn load_ignore_file(dir: &Path, filename: &str) -> Option<Gitignore> {
@@ -33,7 +33,7 @@ fn load_ignore_file(dir: &Path, filename: &str) -> Option<Gitignore> {
 fn is_ignored(
     path: &Path,
     gitignore: &Option<Gitignore>,
-    flattenignore: &Option<Gitignore>,
+    flatignore: &Option<Gitignore>,
 ) -> bool {
     // Check gitignore
     if let Some(gi) = gitignore {
@@ -45,8 +45,8 @@ fn is_ignored(
         }
     }
 
-    // Check flattenignore
-    if let Some(fi) = flattenignore {
+    // Check flatignore
+    if let Some(fi) = flatignore {
         if fi
             .matched_path_or_any_parents(path, path.is_dir())
             .is_ignore()
@@ -64,13 +64,13 @@ fn main() -> io::Result<()> {
     
     // Check for help flag
     if args.len() > 1 && args[1] == "--help" {
-        println!("Usage: flatten [DIRECTORY]");
-        println!("\nFlatten copies all files from a directory (and its subdirectories) into a single 'flattened' directory.");
+        println!("Usage: flatten-project [DIRECTORY]");
+        println!("\nCopies all files from a directory (and its subdirectories) into a single 'flattened' directory.");
         println!("\nArguments:");
         println!("  DIRECTORY    Optional. Path to the directory to flatten. If not provided, uses current directory.");
         println!("\nIgnore Files:");
         println!("  .gitignore      Files matching patterns in this file will be ignored");
-        println!("  .flattenignore  Additional patterns for files to ignore during flattening");
+        println!("  .flatignore  Additional patterns for files to ignore during flattening");
         return Ok(());
     }
 
@@ -89,7 +89,7 @@ fn main() -> io::Result<()> {
 
     // Load both ignore files
     let gitignore = load_ignore_file(&source_dir, ".gitignore");
-    let flattenignore = load_ignore_file(&source_dir, ".flattenignore");
+    let flatignore = load_ignore_file(&source_dir, ".flatignore");
 
     // Handle existing flattened directory
     let flattened_dir = source_dir.join("flattened");
@@ -134,7 +134,7 @@ fn main() -> io::Result<()> {
                     }
 
                     // Check if file should be ignored
-                    if is_ignored(path, &gitignore, &flattenignore) {
+                    if is_ignored(path, &gitignore, &flatignore) {
                         println!("Ignoring {}", path.display());
                         continue;
                     }
