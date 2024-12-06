@@ -61,6 +61,19 @@ fn is_ignored(
 fn main() -> io::Result<()> {
     // Get project path from args or use current directory
     let args: Vec<String> = env::args().collect();
+    
+    // Check for help flag
+    if args.len() > 1 && args[1] == "--help" {
+        println!("Usage: flatten [DIRECTORY]");
+        println!("\nFlatten copies all files from a directory (and its subdirectories) into a single 'flattened' directory.");
+        println!("\nArguments:");
+        println!("  DIRECTORY    Optional. Path to the directory to flatten. If not provided, uses current directory.");
+        println!("\nIgnore Files:");
+        println!("  .gitignore      Files matching patterns in this file will be ignored");
+        println!("  .flattenignore  Additional patterns for files to ignore during flattening");
+        return Ok(());
+    }
+
     let source_dir = if args.len() > 1 {
         PathBuf::from(&args[1])
     } else {
