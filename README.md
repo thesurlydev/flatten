@@ -1,4 +1,4 @@
-# Flattener
+# flatten
 
 A Rust CLI tool that flattens nested project directories into a single directory with underscore-delimited filenames 
 while preserving the original structure.
@@ -6,7 +6,7 @@ while preserving the original structure.
 ## Features
 
 - Preserves original project structure
-- Respects .gitignore and .flattenignore patterns
+- Respects `.gitignore` and `.flattenignore` patterns
 - Handles filename collisions automatically
 - Processes hidden files
 - Creates underscore-delimited filenames based on original paths
@@ -21,20 +21,21 @@ while preserving the original structure.
 
 ## Installation
 
+Clone the project and run:
 ```bash
-cargo install flattener
+cargo install --path .
 ```
 
 ## Usage
 
 Run in the current directory:
 ```bash
-flattener
+flatten
 ```
 
 Or specify a target directory:
 ```bash
-flattener /path/to/project
+flatten /path/to/project
 ```
 
 ## Example
@@ -53,7 +54,7 @@ my-project/
 └── Cargo.toml
 ```
 
-Running `flattener` will create:
+Running `flatten` will create:
 ```
 my-project/
 ├── [original structure remains]
