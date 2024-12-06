@@ -1,7 +1,14 @@
 [package]
 name = "flatten"
 version = "0.1.0"
+description = "Flattens nested project directories into a single directory with underscore-delimited filenames while preserving the original structure."
+authors = ["shane <shane@surly.dev>"]
 edition = "2021"
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/thesurlydev/domain-checker"
+keywords = ["cli", "flattener", "directory", "file-structure", "llm"]
+categories = ["command-line-utilities", "command-line-interface"]
 
 [dependencies]
 ignore = "0.4.23"
