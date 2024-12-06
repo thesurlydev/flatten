@@ -37,7 +37,10 @@ run:
 install:
     cargo install --path .
 
-# Tag with the given TAG arg and push
+# Tag with the given TAG arg
 tag TAG: (_validate-new-tag TAG)
     git tag -a {{TAG}} -m "{{TAG}}"
+
+# Push tags (triggers release to crates.io)
+release:
     git push origin --tags
