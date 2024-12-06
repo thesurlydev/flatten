@@ -5,7 +5,7 @@ use ignore::{
 use std::collections::HashSet;
 use std::env;
 use std::fs;
-use std::io::{self, Read};
+use std::io::{self};
 use std::path::{Path, PathBuf};
 
 fn should_skip_file(file_name: &str) -> bool {
